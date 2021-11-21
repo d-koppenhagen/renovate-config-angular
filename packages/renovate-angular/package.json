@@ -1,0 +1,62 @@
+{
+  "name": "renovate-config-angular",
+  "description": "Angular shareable config for Renovate",
+  "version": "0.0.1",
+  "author": "Danny Koppenhagen <mail@k9n.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d-koppenhagen/renovate-config-angular.git"
+  },
+  "homepage": "https://github.com/d-koppenhagen/renovate-config-angular/packages/renovate-config-angular#readme",
+  "bugs": {
+    "url": "https://github.com/d-koppenhagen/renovate-config-angular/issues"
+  },
+  "files": [],
+  "scripts": {
+    "test": "npm-run-all --parallel test:*",
+    "test:config": "renovate-config-validator"
+  },
+  "devDependencies": {
+    "npm-run-all": "4.1.5",
+    "renovate": "29.14.1"
+  },
+  "renovate-config": {
+    "default": {
+      "packageRules": [
+        {
+          "matchPackagePatterns": [
+            "^@angular/core$",
+            "^@angular/cli$"
+          ],
+          "groupSlug": "angular",
+          "groupName": "angular dependencies",
+          "postUpgradeTasks": {
+            "commands": [
+              "npx @angular/cli@{{{toVersion}}} update @angular/cli@{{{toVersion}}} --from={{{fromVersion}}} --to={{{toVersion}}} --migrate-only --allow-dirty --force",
+              "npx @angular/cli@{{{toVersion}}} update @angular/core@{{{toVersion}}} --from={{{fromVersion}}} --to={{{toVersion}}} --migrate-only --allow-dirty --force"
+            ],
+            "fileFilters": [
+              "**/**"
+            ]
+          }
+        },
+        {
+          "matchPackagePatterns": [
+            "^@angular-eslint/schematics$"
+          ],
+          "groupSlug": "angular eslint",
+          "groupName": "angular eslint dependencies",
+          "postUpgradeTasks": {
+            "commands": [
+              "ng update @angular-eslint/schematics --from={{{fromVersion}}} --to={{{toVersion}}} --migrate-only --allow-dirty --force"
+            ],
+            "fileFilters": [
+              "**/**"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
