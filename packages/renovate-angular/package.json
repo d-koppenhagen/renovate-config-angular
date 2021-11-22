@@ -1,7 +1,7 @@
 {
   "name": "renovate-config-angular",
   "description": "Angular shareable config for Renovate",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Danny Koppenhagen <mail@k9n.dev>",
   "license": "MIT",
   "repository": {
@@ -49,42 +49,17 @@
         "typescript"
       ],
       "allowPostUpgradeCommandTemplating": true,
-      "allowedPostUpgradeCommands": [
-        "^npx @angular/cli@.*update.*",
-        "^npx @angular-eslint/schematics@.*update.*"
-      ],
+      "allowedPostUpgradeCommands": ["^npm ci --ignore-scripts$", "^npx ng update"],
+      "allowScripts": true,
       "packageRules": [
         {
-          "matchPackageNames": [
-            "@angular/cli",
-            "@angular/core"
-          ],
-          "groupSlug": "angular",
-          "groupName": "angular: ng update",
+          "matchPackageNames": ["@angular/core", "@angular/cli"],
           "postUpgradeTasks": {
             "commands": [
               "npm ci --ignore-scripts",
-              "npx @angular/cli@{{{newMajor}}} update {{{depName}}} --from={{{currentVersion}}} --to={{{newVersion}}} --migrate-only --allow-dirty --force"
+              "npx ng update {{{depName}}} --from={{{currentVersion}}} --to={{{newVersion}}} --migrate-only --allow-dirty --force"
             ],
-            "fileFilters": [
-              "**/**"
-            ]
-          }
-        },
-        {
-          "matchPackageNames": [
-            "@angular-eslint/schematics"
-          ],
-          "groupSlug": "angular eslint",
-          "groupName": "angular eslint: ng update",
-          "postUpgradeTasks": {
-            "commands": [
-              "npm ci --ignore-scripts",
-              "ng update {{{depName}}} --from={{{currentVersion}}} --to={{{newVersion}}} --migrate-only --allow-dirty --force"
-            ],
-            "fileFilters": [
-              "**/**"
-            ]
+            "fileFilters": ["**/**"]
           }
         }
       ]
