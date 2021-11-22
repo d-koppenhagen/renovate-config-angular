@@ -49,10 +49,16 @@
         "typescript"
       ],
       "allowPostUpgradeCommandTemplating": true,
-      "allowedPostUpgradeCommands": ["^npx @angular\/cli@.*update.*", "^npx @angular-eslint\/schematics@.*update.*"],
+      "allowedPostUpgradeCommands": [
+        "^npx @angular/cli@.*update.*",
+        "^npx @angular-eslint/schematics@.*update.*"
+      ],
       "packageRules": [
         {
-          "matchPackageNames": ["@angular/cli", "@angular/core"],
+          "matchPackageNames": [
+            "@angular/cli",
+            "@angular/core"
+          ],
           "groupSlug": "angular",
           "groupName": "angular: ng update",
           "postUpgradeTasks": {
@@ -60,11 +66,15 @@
               "npm ci --ignore-scripts",
               "npx @angular/cli@{{{newMajor}}} update {{{depName}}} --from={{{currentVersion}}} --to={{{newVersion}}} --migrate-only --allow-dirty --force"
             ],
-            "fileFilters": ["**/**"]
+            "fileFilters": [
+              "**/**"
+            ]
           }
         },
         {
-          "matchPackageNames": ["@angular-eslint/schematics"],
+          "matchPackageNames": [
+            "@angular-eslint/schematics"
+          ],
           "groupSlug": "angular eslint",
           "groupName": "angular eslint: ng update",
           "postUpgradeTasks": {

@@ -1,4 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "angular"]
+  "extends": ["config:base", ":preserveSemverRanges", "angular"]
 }
