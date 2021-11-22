@@ -1,7 +1,7 @@
 {
   "name": "renovate-config-angular",
   "description": "Angular shareable config for Renovate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Danny Koppenhagen <mail@k9n.dev>",
   "license": "MIT",
   "repository": {
@@ -19,10 +19,35 @@
   },
   "devDependencies": {
     "npm-run-all": "4.1.5",
-    "renovate": "29.14.1"
+    "renovate": "29.16.1"
   },
   "renovate-config": {
     "default": {
+      "ignoreDeps": [
+        "@angular/animations",
+        "@angular/common",
+        "@angular/compiler",
+        "@angular/core",
+        "@angular/forms",
+        "@angular/platform-browser",
+        "@angular/platform-browser-dynamic",
+        "@angular/router",
+        "rxjs",
+        "tslib",
+        "zone.js",
+        "@angular-devkit/build-angular",
+        "@angular/cli",
+        "@angular/compiler-cli",
+        "@types/jasmine",
+        "@types/node",
+        "jasmine-core",
+        "karma",
+        "karma-chrome-launcher",
+        "karma-coverage",
+        "karma-jasmine",
+        "karma-jasmine-html-reporter",
+        "typescript"
+      ],
       "packageRules": [
         {
           "matchPackagePatterns": [
@@ -30,11 +55,10 @@
             "^@angular/cli$"
           ],
           "groupSlug": "angular",
-          "groupName": "angular dependencies",
+          "groupName": "angular: ng update",
           "postUpgradeTasks": {
             "commands": [
-              "npx @angular/cli@{{{toVersion}}} update @angular/cli@{{{toVersion}}} --from={{{fromVersion}}} --to={{{toVersion}}} --migrate-only --allow-dirty --force",
-              "npx @angular/cli@{{{toVersion}}} update @angular/core@{{{toVersion}}} --from={{{fromVersion}}} --to={{{toVersion}}} --migrate-only --allow-dirty --force"
+              "npx @angular/cli@{{{toVersion}}} update @angular/cli @@angular/core --allow-dirty --force"
             ],
             "fileFilters": [
               "**/**"
@@ -49,7 +73,7 @@
           "groupName": "angular eslint dependencies",
           "postUpgradeTasks": {
             "commands": [
-              "ng update @angular-eslint/schematics --from={{{fromVersion}}} --to={{{toVersion}}} --migrate-only --allow-dirty --force"
+              "ng update @angular-eslint/schematics --allow-dirty --force"
             ],
             "fileFilters": [
               "**/**"
