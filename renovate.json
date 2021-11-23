@@ -1,5 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":preserveSemverRanges", "github>d-koppenhagen/renovate-config-angular"],
-  "baseDir": "/test-workspace"
+  "extends": ["config:base", ":preserveSemverRanges", "github>d-koppenhagen/renovate-config-angular"]
 }
