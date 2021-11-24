@@ -27,6 +27,7 @@
   "allowPostUpgradeCommandTemplating": true,
   "allowedPostUpgradeCommands": ["^npm ci --ignore-scripts$", "^npx ng update"],
   "allowScripts": true,
+  "rangeStrategy": "replace",
   "packageRules": [
     {
       "matchPackageNames": ["@angular/core", "@angular/cli"],
