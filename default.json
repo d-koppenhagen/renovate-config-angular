@@ -1,10 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Renovate configuration for Angular",
   "ignoreDeps": [
     "@angular/animations",
     "@angular/common",
     "@angular/compiler",
-    "@angular/core",
     "@angular/forms",
     "@angular/platform-browser",
     "@angular/platform-browser-dynamic",
@@ -13,7 +13,6 @@
     "tslib",
     "zone.js",
     "@angular-devkit/build-angular",
-    "@angular/cli",
     "@angular/compiler-cli",
     "@types/jasmine",
     "@types/node",
